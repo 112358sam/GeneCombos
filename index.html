@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gene Combinations</title>
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link href="dist/css/tabulator.min.css" rel="stylesheet">
+    <script type="text/javascript" src="dist/js/tabulator.min.js"></script>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="grid-x grid-padding-x">
+            <div class="large-12 cell">
+                <h1>Goonstation Gene Combinations</h1>
+            </div>
+        </div>
+        <div>
+            <input id="filter-value" type="text" placeholder="Filter">
+         </div>
+        <div id="gene-table"></div>
+                <script type="text/javascript" src="/js/tabulator/4.9/tabulator.min.js"></script>
+                    <script type="text/javascript">
+                    var valueF = document.getElementById("filter-value");
+                    
+                    function updateFilter(){
+                        table.setFilter([[
+                            {field:"out",type:"like",value:valueF.value},
+                            {field:"in1",type:"like",value:valueF.value},
+                            {field:"in2",type:"like",value:valueF.value}
+                        ]]);
+                    }
+
+                    document.getElementById("filter-value").addEventListener("keyup", updateFilter);
+
+                    var tabledata = [
+                    {id:1, in1:"Adrenaline Rush",in2:"Aquatic Genetic", out:"Anaerobic Metabolism"},
+                    {id:2, in1:"Musculature Enhancement",in2:"Radioactive", out:"Gamma Ray Exposure"},
+                    {id:3, in1:"Optic Energizer",in2:"Blindness", out:"X-Ray Vision"},
+                    {id:4, in1:"Adrenaline Rush",in2:"Healing Touch", out:"Regeneration"},
+                    {id:5, in1:"Irritable Bowels",in2:"Apocrine Enhancement",out:"High Decay Digestion"},
+                    {id:6, in1:"Fire Resistance",in2:"Cold Resistance", out:"Thermal Resistance"},
+                    {id:7, in1:"Incendiary Mitochondria",in2:"Glowy", out:"Fire Resistance"},
+                    {id:8, in1:"Cryokinesis",in2:"Glowy", out:"Cold Resistance"},
+                    {id:9, in1:"Radioactive",in2:"Glowy", out:"Radiation Resistance"},
+                    {id:10, in1:"Ethanol Production",in2:"Natural Anti-Toxins", out:"Alcohol Resistance"},
+                    {id:11, in1:"Meta-Neural Enhancement",in2:"High-Pressure Larynx", out:"Meta-Neural Antenna"},
+                    {id:12, in1:"Anemia",in2:"Polycythemia", out:"Hemopoiesis Overdrive"},
+                    {id:13, in1:"High-Pressure Larynx",in2:"Constricted Larynx", out:"Frontal Gyrus Alteration Type-X"},
+                    {id:14, in1:"Frontal Gyrus Alteration Type-B",in2:"Frontal Gyrus Alteration Type-E", out:"Frontal Gyrus Alteration Type-X"},
+                    {id:15, in1:"Frontal Gyrus Alteration Type-B",in2:"Frontal Gyrus Alteration Type-C", out:"Frontal Gyrus Alteration Type-O"},
+                    {id:16, in1:"Frontal Gyrus Alteration Type-C",in2:"Frontal Gyrus Alteration Type-T", out:"Coprolalia"},
+                    {id:17, in1:"Diminished Optic Nerves",in2:"Bioluminescent Overdrive", out:"Epilepsy"},
+                    {id:18, in1:"Diminished Optic Nerves",in2:"Narcolepsy", out:"Blindness"},
+                    {id:19, in1:"Constricted Larynx",in2:"Paranoia", out:"Frontal Gyrus Suspension"},
+                    {id:20, in1:"Natural Anti-Toxins",in2:"Apocrine Enhancement", out:"Ethanol Production"},
+                    {id:21, in1:"Dermal Glow",in2:"Apocrine Enhancement", out:"Radioactive"},
+                    {id:22, in1:"Radioactive",in2:"Spatial Destabilization", out:"Mutagenic Field"},
+                    {id:23, in1:"Dyspraxia",in2:"Coprolalia", out:"Tourettes"},
+                    {id:24, in1:"Apidae Metabolism",in2:"Apocrine Enhancement", out:"Nectar Persperation"},
+                    {id:25, in1:"Dermal Glitter",in2:"Melanin Suppressor", out:"Glowy"},
+                    {id:26, in1:"Dermal Glitter",in2:"Melanin Stimulator", out:"Glowy"},
+                    {id:27, in1:"Dermal Glitter",in2:"Dermal Glow", out:"Glowy"},
+                    {id:28, in1:"Glowy",in2:"Dermal Glow", out:"Dermal Glitter"},
+                    {id:29, in1:"Incendiary Mitochondria",in2:"Dermal Glow", out:"Blazing Aura"},
+                    {id:30, in1:"Fire Breath",in2:"Dermal Glow", out:"Blazing Aura"},
+                    {id:31, in1:"Physically Unfit",in2:"Natural Anti-Toxins", out:"Musculature Enhancement"},
+                    {id:32, in1:"Irritable Bowels",in2:"Pseudonecrosis", out:"Apocrine Enhancement"},
+                    {id:33, in1:"Blattodean Genetics",in2:"Natural Anti-Toxins", out:"Apidae Metabolism"},
+                    {id:34, in1:"Telepathy",in2:"Meta-Neural Antenna", out:"Telekinetic Pull"},
+                    {id:35, in1:"Diminished Optic Nerves",in2:"Glowy", out:"Optic Energizer"},
+                    {id:36, in1:"High-Pressure Larynx",in2:"Irritable Bowels", out:"High-Pressure Intestines"},
+                    {id:37, in1:"Dactyl Crystallization",in2:"Fire Resistance", out:"Cryokinesis"},
+                    {id:38, in1:"Natural Anti-Toxins",in2:"Musculature Enhancement", out:"Adrenaline Rush"},
+                    {id:39, in1:"Musculature Enhancement",in2:"Primal Genetics ", out:"Jumpy"},
+                    {id:40, in1:"Meta-Neural Enhancement",in2:"Constricted Larynx", out:"Telepathy"},
+                    {id:41, in1:"Dactyl Crystallization",in2:"Ethanol Production", out:"Midas Touch"},
+                    {id:42, in1:"Dactyl Crystallization",in2:"Dermal Glitter", out:"Midas Touch"},
+                    {id:43, in1:"Midas Touch",in2:"Self Biomass Manipulation", out:"Healing Touch"},
+                    {id:44, in1:"Midas Touch",in2:"Natural Anti-Toxins", out:"Healing Touch"},
+                    {id:45, in1:"Meta-Neural Antenna",in2:"Spatial Destabilization", out:"Dimension Shift"},
+                    {id:46, in1:"Chronic Cough",in2:"Incendiary Mitochondria", out:"Fire Breath"},
+                    {id:47, in1:"Chronic Cough",in2:"Ethanol Production", out:"Mass Emesis"},
+                    {id:48, in1:"Chronic Cough",in2:"Apocrine Enhancement", out:"Mass Emesis"},
+                    {id:49, in1:"Chronic Sneezing",in2:"Ethanol Production", out:"Mass Emesis"},
+                    {id:50, in1:"Chronic Sneezing",in2:"Apocrine Enhancement", out:"Mass Emesis"},
+                    {id:51, in1:"Aquatic Genetics",in2:"Melanin Stimulator", out:"Ink Glands"},
+                    {id:52, in1:"Aquatic Genetics",in2:"Dermal Glitter", out:"Ink Glands"},
+                    {id:53, in1:"Aquatic Genetics",in2:"Chronic Sneezing", out:"Ink Glands"},
+                    {id:54, in1:"Glowy",in2:"Meta-Neural Enhancement", out:"Photokinesis"},
+                    {id:55, in1:"Dermal Glitter",in2:"Meta-Neural Enhancement", out:"Photokinesis"},
+                    {id:56, in1:"Dermal Glow",in2:"Meta-Neural Enhancement", out:"Photokinesis"},
+                    {id:57, in1:"Cloak of Darkness",in2:"Meta-Neural Enhancement", out:"Erebokinesis"},
+                    {id:58, in1:"Chameleon",in2:"Meta-Neural Enhancement", out:"Erebokinesis"},
+                    {id:59, in1:"Unstable Refraction*",in2:"Meta-Neural Enhancement", out:"Erebokinesis"},
+                    {id:60, in1:"High-Pressure Larynx",in2:"Irritable Bowels", out:"Brown Note"},
+                    {id:61, in1:"Apocrine Enhancement",in2:"Irritable Bowels", out:"Brown Note"},
+                    {id:62, in1:"Unstable Refraction*",in2:"Melanin Stimulator", out:"Cloak of Darkness"},
+                    {id:63, in1:"Unstable Refraction*",in2:"Melanin Suppressor", out:"Chameleon"},
+                    {id:64, in1:"Unstable Refraction*",in2:"Meta-Neural Haze", out:"Chameleon"},
+                    {id:65, in1:"Mass Emesis",in2:"Irritable Bowels", out:"Vestigal Ballistics"},
+                    {id:66, in1:"Front Gyrus Suspension",in2:"Blindness", out:"Primal Genetics"},
+                    {id:67, in1:"Front Gyrus Suspension",in2:"Deafness", out:"Primal Genetics"},
+                    {id:68, in1:"Deafness",in2:"Blindness", out:"Primal Genetics"},
+                    {id:69, in1:"Dactyl Crystallization",in2:"Apocrine Enhancement", out:"Aquatic Genetics"},
+                    {id:70, in1:"Muscular Enhancement",in2:"Self Biomass Manipulation", out:"Aquatic Genetics"},
+                    {id:71, in1:"Apidae Metabolism",in2:"Apocrine Enhancement", out:"Blattodean Genetics"},
+                    {id:72, in1:"Apidae Metabolism",in2:"Radioactive", out:"Blattodean Genetics"},
+                    {id:73, in1:"Glowy",in2:"Radioactive", out:"Bioluminescent Overdrive"},
+                    {id:74, in1:"Glowy",in2:"Chameleon", out:"Bioluminescent Overdrive"},
+                    {id:75, in1:"Glowy",in2:"Epilepsy", out:"Bioluminescent Overdrive"},
+                    {id:76, in1:"Cranial Keratin Formation",in2:"Chameleon", out:"Saurian Genetics"},
+                    {id:77, in1:"Cranial Keratin Formation",in2:"Fire Resistance", out:"Saurian Genetics"},
+                    {id:78, in1:"Musculature Enhancement",in2:"Ethanol Production", out:"Dwarfism"},
+                    {id:79, in1:"Musculature Enhancement",in2:"Alcohol Resistance", out:"Dwarfism"},
+                    {id:80, in1:"Musculature Enhancement",in2:"Apocrine Enhancement", out:"Dwarfism"},
+                    {id:81, in1:"Paranoia",in2:"Pseudonecrosis", out:"Ossification"},
+                    {id:82, in1:"Cloak of Darkness",in2:"Pseudonecrosis", out:"Ossification"},
+                    {id:83, in1:"X-Ray Vision",in2:"Pseudonecrosis", out:"Ossification"}
+                ];
+
+                    var table = new Tabulator("#gene-table", {
+                    //height:200, // set height of table to enable virtual DOM
+                    data:tabledata, //load initial data into table
+                    layout:"fitColumns", //fit columns to width of table (optional)
+                    columns:[ //Define Table Columns
+                        {title:"Input 1", field:"in1", sorter:"string"},
+                        {title:"Input 2", field:"in2", sorter:"string"},
+                        {title:"Result", field:"out", sorter:"string"}
+                    ],
+                    initialSort:[             //set the initial sort order of the data
+                    {column:"out", dir:"asc"},
+                    ],
+                    cellClick:function(e, row, column){ //trigger an info box on the box clicked
+                        //alert("Row " + row.getIndex() + " Clicked!!!!");
+                    },
+                    });
+                </script>
+        
+        <p>Feel free to submit an issue or contact Slugo#7646 on discord to suggest changes.</p>
+    </div>  
+
+<!--Load my JS files-->
+<script src="./examples.js"></script>
+<script src="./assembler.js"></script>
+<!--Load Foundation JS-->
+<script src="js/vendor/jquery.js"></script>
+<script src="js/vendor/what-input.js"></script>
+<script src="js/vendor/foundation.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
+
