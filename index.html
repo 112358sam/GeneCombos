@@ -11,17 +11,36 @@
     <script type="text/javascript" src="dist/js/tabulator.min.js"></script>
 </head>
 <body>
+    <div class="top-bar">
+        <div class="top-bar-left">
+          <ul class="dropdown menu" data-dropdown-menu>
+            <li class="menu-text">Gene Combinations</li>
+            <li class="has-submenu">
+              <a href="#0">Other SS13 Tools</a><!-- copy this line to add new bar items -->
+              <ul class="submenu menu vertical" data-submenu>
+                <li><a href="#0">ChemiAssembler - ChemiCompiler Tool</a></li> <!-- copy this line to add new links -->
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="top-bar-right">
+          <ul class="menu">
+            <li><input type="search" placeholder="Search"></li>
+            <li><button type="button" class="button">Search</button></li>
+          </ul>
+        </div>
+      </div>
     <div class="grid-container">
         <div class="grid-x grid-padding-x">
             <div class="large-12 cell">
                 <h1>Goonstation Gene Combinations</h1>
             </div>
         </div>
-
+        The partner of any gene labeled with (PRIORITY) in a recipe can be replaced with high complexity DNA and still yield the same result.<br>Results appended with a (*) have a special note that can be read by clicking the row. 
+        <div id="gene-table"></div>
         <div>
             <input id="filter-value" type="text" placeholder="Filter">
         </div>
-        The partner of any gene labeled with PRIORITY in a recipe can be replaced with high compleixty DNA and still yield the same result.<br>Results appended with a (*) have a special note that can be read by clicking the row.        <div id="gene-table"></div>
                 <script type="text/javascript" src="/js/tabulator/4.9/tabulator.min.js"></script>
                     <script type="text/javascript">
                     var valueF = document.getElementById("filter-value");
@@ -37,7 +56,7 @@
                     document.getElementById("filter-value").addEventListener("keyup", updateFilter);
 
                     var tabledata = [
-                    {id:1, in1:"Adrenaline Rush (PRIORITY)",in2:"Aquatic Genetics (PRIORITY)", out:"Anaerobic Metabolism *"},
+                    {id:1, in1:"Adrenaline Rush (PRIORITY)",in2:"Aquatic Genetics (PRIORITY)", out:"Anaerobic Metabolism (*)"},
                     {id:2, in1:"Musculature Enhancement (PRIORITY)",in2:"Radioactive (PRIORITY)", out:"Gamma Ray Exposure"},
                     {id:3, in1:"Optic Energizer (PRIORITY)",in2:"Blindness (PRIORITY)", out:"X-Ray Vision"},
                     {id:4, in1:"Adrenaline Rush",in2:"Healing Touch (PRIORITY)", out:"Regeneration"},
@@ -52,7 +71,7 @@
                     {id:13, in1:"High-Pressure Larynx",in2:"Constricted Larynx (PRIORITY)", out:"Frontal Gyrus Alteration Type-X"},
                     {id:14, in1:"Frontal Gyrus Alteration Type-B (PRIORITY)",in2:"Frontal Gyrus Alteration Type-E (PRIORITY)", out:"Frontal Gyrus Alteration Type-X"},
                     {id:15, in1:"Frontal Gyrus Alteration Type-B",in2:"Frontal Gyrus Alteration Type-C (PRIORITY)", out:"Frontal Gyrus Alteration Type-O"},
-                    {id:16, in1:"Frontal Gyrus Alteration Type-C",in2:"Frontal Gyrus Alteration Type-T (PRIORITY)", out:"Coprolalia *"},
+                    {id:16, in1:"Frontal Gyrus Alteration Type-C",in2:"Frontal Gyrus Alteration Type-T (PRIORITY)", out:"Coprolalia (*)"},
                     {id:17, in1:"Diminished Optic Nerves (PRIORITY)",in2:"Bioluminescent Overdrive (PRIORITY)", out:"Epilepsy"},
                     {id:18, in1:"Diminished Optic Nerves",in2:"Narcolepsy (PRIORITY)", out:"Blindness"},
                     {id:19, in1:"Constricted Larynx",in2:"Paranoia (PRIORITY)", out:"Frontal Gyrus Suspension"},
@@ -95,12 +114,12 @@
                     {id:56, in1:"Dermal Glow",in2:"Meta-Neural Enhancement", out:"Photokinesis"},
                     {id:57, in1:"Cloak of Darkness (PRIORITY)",in2:"Meta-Neural Enhancement", out:"Erebokinesis"},
                     {id:58, in1:"Chameleon (PRIORITY)",in2:"Meta-Neural Enhancement", out:"Erebokinesis"},
-                    {id:59, in1:"Unstable Refraction (PRIORITY)",in2:"Meta-Neural Enhancement", out:"Erebokinesis *"},
-                    {id:60, in1:"High-Pressure Larynx",in2:"Irritable Bowels", out:"Brown Note *"},
+                    {id:59, in1:"Unstable Refraction (PRIORITY)",in2:"Meta-Neural Enhancement", out:"Erebokinesis (*)"},
+                    {id:60, in1:"High-Pressure Larynx",in2:"Irritable Bowels", out:"Brown Note (*)"},
                     {id:61, in1:"Apocrine Enhancement",in2:"Irritable Bowels", out:"Brown Note"},
-                    {id:62, in1:"Unstable Refraction",in2:"Melanin Stimulator", out:"Cloak of Darkness *"},
-                    {id:63, in1:"Unstable Refraction",in2:"Melanin Suppressor", out:"Chameleon *"},
-                    {id:64, in1:"Unstable Refraction",in2:"Meta-Neural Haze (PRIORITY)", out:"Chameleon *"},
+                    {id:62, in1:"Unstable Refraction",in2:"Melanin Stimulator", out:"Cloak of Darkness (*)"},
+                    {id:63, in1:"Unstable Refraction",in2:"Melanin Suppressor", out:"Chameleon (*)"},
+                    {id:64, in1:"Unstable Refraction",in2:"Meta-Neural Haze (PRIORITY)", out:"Chameleon (*)"},
                     {id:65, in1:"Mass Emesis",in2:"Irritable Bowels", out:"Vestigal Ballistics"},
                     {id:66, in1:"Front Gyrus Suspension (PRIORITY)",in2:"Blindness", out:"Primal Genetics"},
                     {id:67, in1:"Front Gyrus Suspension",in2:"Deafness (PRIORITY)", out:"Primal Genetics"},
@@ -134,7 +153,7 @@
                     initialSort:[             //set the initial sort order of the data
                     {column:"out", dir:"asc"},
                     ],
-                    cellClick:function(e, row, column){ //trigger an info box on the box clicked
+                    rowClick:function(e, row){ //trigger an info box on the box clicked
                         //alert("Row " + row.getIndex() + " Clicked!!!!");
                     },
                     });
