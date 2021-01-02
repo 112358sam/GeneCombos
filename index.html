@@ -5,11 +5,11 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gene Combinations</title>
-    <link rel="stylesheet" href="css/foundation.css">
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="assets_foundation/css/foundation.css">
     <link href="dist/css/tabulator.min.css" rel="stylesheet">
     <script type="text/javascript" src="dist/js/tabulator.min.js"></script>
 </head>
+
 <body>
     <div class="grid-container">
         <div class="grid-x grid-padding-x">
@@ -17,13 +17,8 @@
                 <div class="top-bar">
                     <div class="top-bar-left">
                       <ul class="dropdown menu" data-dropdown-menu>
-                        <li class="menu-text">Gene Combinations</li>
-                        <li class="has-submenu">
-                          <a href="#0">Other SS13 Tools</a><!-- copy this line to add new bar items -->
-                          <ul class="submenu menu vertical" data-submenu>
-                            <li><a href="https://112358sam.github.io/ChemiAssembler/">ChemiAssembler - ChemiCompiler Tool</a></li> <!-- copy this line to add new links -->
-                          </ul>
-                        </li>
+                        <li class="menu-text">Other SS13 Tools</li>
+                        <li><a href="https://112358sam.github.io/ChemiAssembler/">ChemiAssembler - ChemiCompiler Tool</a></li>
                       </ul>
                     </div>
                 </div>
@@ -31,11 +26,35 @@
             </div>
         </div>
         The partner of any gene labeled with (PRIORITY) in a recipe can be replaced with high complexity DNA and still yield the same result.<br>Results appended with a (*) have a special note that can be read by clicking the row. 
+        <div class="reveal" id="anaerobic_modal" data-reveal>
+            <p class="lead">This is also the result of combining two high complexity DNA mutations.</p>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="reveal" id="refraction_modal" data-reveal>
+            <p class="lead">Unstable refraction cannot be found naturally or through combinations.</p>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="reveal" id="typet_modal" data-reveal>
+            <p class="lead">Frontal Gyrus Alteration Type-T cannot be found naturally or through combinations.</p>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="reveal" id="brown_modal" data-reveal>
+            <p class="lead">This recipe is identical and overridden by the recipe for high-pressure intestines. This recipe is in the code, but will always result in high pressure intestines instead.</p>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         <div>
             <input id="filter-value" type="text" placeholder="Filter">
         </div>
         <div id="gene-table"></div>
-            <script type="text/javascript" src="/js/tabulator/4.9/tabulator.min.js"></script>
+
                 <script type="text/javascript">
                 var valueF = document.getElementById("filter-value");
                 
@@ -148,7 +167,22 @@
                 {column:"out", dir:"asc"},
                 ],
                 rowClick:function(e, row){ //trigger an info box on the box clicked
-                    //alert("Row " + row.getIndex() + " Clicked!!!!");
+                    var id = row.getData().id
+                    if (id == 1){
+                        var elem = '#anaerobic_modal'
+                    } else if (id == 60){
+                        var elem = '#brown_modal'
+                    } else if (id == 59 || id == 62 || id == 63 || id == 64){
+                        var elem = '#refraction_modal'
+                    }
+                    else if (id == 16){
+                        var elem = '#typet_modal'
+                    }
+                    else{
+                        return
+                    }
+                    var popup = new Foundation.Reveal($(elem));
+                    popup.open();
                 },
                 });
             </script>
@@ -157,14 +191,13 @@
     </div>  
 
 <!--Load my JS files-->
-<script src="./examples.js"></script>
-<script src="./assembler.js"></script>
-<!--Load Foundation JS-->
-<script src="js/vendor/jquery.js"></script>
-<script src="js/vendor/what-input.js"></script>
-<script src="js/vendor/foundation.js"></script>
-<script src="js/app.js"></script>
 
+<!--Load Foundation JS-->
+<script src="assets_foundation/js/vendor.js"></script>
+<script src="assets_foundation/js/foundation.js"></script>
+<script>
+    $(document).foundation();
+</script>
 </body>
 </html>
 
